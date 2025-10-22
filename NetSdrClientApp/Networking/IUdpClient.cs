@@ -7,6 +7,5 @@
         Task StartListeningAsync();
 
         void StopListening();
-        void Exit();
     }
 }
