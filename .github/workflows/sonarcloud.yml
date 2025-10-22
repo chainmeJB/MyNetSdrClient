@@ -19,7 +19,7 @@
 #     * a. Copy/paste the Project Key and the Organization Key into the args parameter below
 #          (You'll find this information in SonarCloud. Click on "Information" at the bottom left)
 #
-#     * b. Generate a new token and add it to your Github repository's secrets using the name SONAR_TOKEN
+#     * b. Generate a new token and add it to your Github repository's secrets using the name SONAR_TOKEN1
 #          (On SonarCloud, click on your avatar on top-right > My account > Security
 #           or go directly to https://sonarcloud.io/account/security/)
 
@@ -30,9 +30,9 @@ name: SonarCloud analysis
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "**" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "**" ]
   workflow_dispatch:
 
 permissions:
@@ -58,7 +58,7 @@ jobs:
           dotnet sonarscanner begin `
           /k:"chainmeJB_NetSdrClient" `
           /o:"chainmejb" `
-          /d:sonar.token="${{ secrets.SONAR_TOKEN }}" `
+          /d:sonar.token="${{ secrets.SONAR_TOKEN1 }}" `
           /d:sonar.cs.opencover.reportsPaths="**/coverage.xml" `
           /d:sonar.cpd.cs.minimumTokens=40 `
           /d:sonar.cpd.cs.minimumLines=5 `
@@ -79,5 +79,5 @@ jobs:
         shell: pwsh
       # 3) END: SonarScanner
       - name: SonarScanner End
-        run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+        run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN1 }}"
         shell: pwsh
