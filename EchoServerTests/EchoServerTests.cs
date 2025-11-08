@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using EchoServer;
+using EchoServerTests.Mocks;
 
 namespace EchoServerTests
 {
