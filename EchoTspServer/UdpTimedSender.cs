@@ -15,6 +15,7 @@ namespace EchoServer
         private readonly int _port;
         private readonly ILogger _logger;
         private readonly UdpClient _udpClient;
+        private readonly Random _random;
         private Timer _timer;
         private ushort _sequenceNumber = 0;
 
@@ -24,6 +25,7 @@ namespace EchoServer
             _port = port;
             _logger = logger ?? new ConsoleLogger();
             _udpClient = new UdpClient();
+            _random = new Random();
         }
 
         public void StartSending(int intervalMilliseconds)
@@ -38,9 +40,8 @@ namespace EchoServer
         {
             try
             {
-                Random rnd = new Random();
                 byte[] samples = new byte[1024];
-                rnd.NextBytes(samples);
+                _random.NextBytes(samples);
                 _sequenceNumber++;
 
                 byte[] msg = CombineArrays(
