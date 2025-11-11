@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,7 +16,7 @@ namespace EchoServer
         private readonly int _port;
         private readonly ILogger _logger;
         private readonly UdpClient _udpClient;
-        private readonly Random _random;
+        private readonly RandomNumberGenerator _random;
         private Timer _timer;
         private ushort _sequenceNumber = 0;
 
@@ -25,7 +26,7 @@ namespace EchoServer
             _port = port;
             _logger = logger ?? new ConsoleLogger();
             _udpClient = new UdpClient();
-            _random = new Random();
+            _random = RandomNumberGenerator.Create();
         }
 
         public void StartSending(int intervalMilliseconds)
@@ -41,7 +42,7 @@ namespace EchoServer
             try
             {
                 byte[] samples = new byte[1024];
-                _random.NextBytes(samples);
+                _random.GetBytes(samples);
                 _sequenceNumber++;
 
                 byte[] msg = CombineArrays(
@@ -86,6 +87,7 @@ namespace EchoServer
         {
             StopSending();
             _udpClient?.Dispose();
+            _random?.Dispose();
         }
     }
 }
