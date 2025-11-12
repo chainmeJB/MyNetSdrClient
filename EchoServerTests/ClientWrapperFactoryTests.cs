@@ -23,8 +23,8 @@ namespace EchoServerTests
             var wrapper = factory.CreateClientWrapper(tcpClient);
 
             // Assert
-            Assert.IsNotNull(wrapper);
-            Assert.IsInstanceOf<TcpClientWrapper>(wrapper);
+            Assert.That(wrapper, Is.Not.Null);
+            Assert.That(wrapper, Is.InstanceOf<TcpClientWrapper>());
 
             // Cleanup
             wrapper.Dispose();

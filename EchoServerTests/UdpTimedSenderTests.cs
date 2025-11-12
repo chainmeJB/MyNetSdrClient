@@ -27,7 +27,7 @@ namespace EchoServerTests
             using var sender = new UdpTimedSender("127.0.0.1", 5000, _mockLogger.Object);
 
             // Assert
-            Assert.IsNotNull(sender);
+            Assert.That(sender, Is.Not.Null);
         }
 
         [Test]

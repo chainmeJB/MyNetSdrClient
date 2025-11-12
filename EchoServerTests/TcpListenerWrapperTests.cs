@@ -46,7 +46,7 @@ namespace EchoServerTests
             var acceptTask = wrapper.AcceptTcpClientAsync();
 
             // Assert
-            Assert.IsFalse(acceptTask.IsCompleted); // Should be waiting for connection
+            Assert.That(acceptTask.IsCompleted, Is.False); // Should be waiting for connection
 
             // Cleanup
             wrapper.Stop();

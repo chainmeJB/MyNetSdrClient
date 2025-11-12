@@ -40,7 +40,7 @@ namespace EchoServerTests
             var server = new EchoServer.EchoServer(5000);
 
             // Assert
-            Assert.IsFalse(server.IsRunning);
+            Assert.That(server.IsRunning, Is.False);
         }
 
         [Test]
@@ -50,8 +50,8 @@ namespace EchoServerTests
             var server = new EchoServer.EchoServer(5000, _mockLogger.Object);
 
             // Assert
-            Assert.IsNotNull(server);
-            Assert.IsFalse(server.IsRunning);
+            Assert.That(server, Is.Not.Null);
+            Assert.That(server.IsRunning, Is.False);
         }
 
         [Test]
@@ -218,7 +218,7 @@ namespace EchoServerTests
 
             // Assert
             _mockLogger.Verify(l => l.Log("Server stopped."), Times.Once);
-            Assert.IsFalse(server.IsRunning);
+            Assert.That(server.IsRunning, Is.False);
         }
 
         [Test]
@@ -242,7 +242,7 @@ namespace EchoServerTests
             server.Dispose();
 
             // Assert
-            Assert.IsFalse(server.IsRunning);
+            Assert.That(server.IsRunning, Is.False);
         }
     }
 }

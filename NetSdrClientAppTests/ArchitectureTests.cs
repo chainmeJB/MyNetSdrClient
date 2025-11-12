@@ -15,7 +15,7 @@ namespace NetSdrClientTests
                 .HaveDependencyOn("NetSdrClientApp.Networking")
                 .GetResult();
 
-            Assert.IsTrue(result.IsSuccessful, $"Messages depend on Networking: {string.Join(", ", result.FailingTypeNames ?? Array.Empty<string>())}");
+            Assert.That(result.IsSuccessful, Is.True, $"Messages depend on Networking: {string.Join(", ", result.FailingTypeNames ?? Array.Empty<string>())}");
         }
 
         [Test]
@@ -28,7 +28,7 @@ namespace NetSdrClientTests
                 .HaveDependencyOn("NetSdrClientApp.Messages")
                 .GetResult();
 
-            Assert.IsTrue(result.IsSuccessful, $"Networking depends on Messages: {string.Join(", ", result.FailingTypeNames ?? Array.Empty<string>())}");
+            Assert.That(result.IsSuccessful, Is.True, $"Networking depends on Messages: {string.Join(", ", result.FailingTypeNames ?? Array.Empty<string>())}");
         }
 
         [Test]
@@ -41,7 +41,7 @@ namespace NetSdrClientTests
                 .HaveDependencyOn("EchoTspServer")
                 .GetResult();
 
-            Assert.IsTrue(result.IsSuccessful, $"Messages depend on EchoTspServer: {string.Join(", ", result.FailingTypeNames ?? Array.Empty<string>())}");
+            Assert.That(result.IsSuccessful, Is.True, $"Messages depend on EchoTspServer: {string.Join(", ", result.FailingTypeNames ?? Array.Empty<string>())}");
         }
     }
 }
