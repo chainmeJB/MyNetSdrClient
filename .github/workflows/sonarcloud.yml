@@ -62,8 +62,7 @@ jobs:
           /d:sonar.cs.opencover.reportsPaths="**/coverage.xml" `
           /d:sonar.cpd.cs.minimumTokens=40 `
           /d:sonar.cpd.cs.minimumLines=5 `
-          /d:sonar.exclusions=**/bin/**,**/obj/**,**/sonarcloud.yml `
-          /d:sonar.tests=NetSdrClientAppTests,EchoServerTests `
+          /d:sonar.exclusions=**/Tests/**,**/*.Tests.cs,**/*Test.cs,**/bin/**,**/obj/**,**/sonarcloud.yml `
           /d:sonar.test.inclusions=**/*Tests.cs,**/*Test.cs `
           /d:sonar.coverage.exclusions=**/*Tests/**,**/*Test/** `
           /d:sonar.qualitygate.wait=true
